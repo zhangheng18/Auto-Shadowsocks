@@ -11,4 +11,4 @@
 python frees.py 
 
 ### 其他
-Release 发布的是免python环境的版本，执行freess.exe 即可
+[Release](https://github.com/xiaoTaoist/Auto-Shadowsocks/releases/download/v1.0/freess.zip) 是编译好的版本，执行freess.exe 即可
