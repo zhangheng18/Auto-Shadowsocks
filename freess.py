@@ -22,7 +22,7 @@ def Get_Endata():
         print("正在获取信息。。。。。。")
         html = s.get(url,headers=headers,timeout=5).text
         
-        a,b = re.findall(r"\'(.*?)\'",html)[5:7]
+        a,b = re.findall(r"\'(.*?)\'",html)[9:11]
         img_c  = re.findall(r"data:image/png;base64,(.*)'",html)[0]
         img_c = BytesIO(base64.b64decode(img_c))
         img = Image.open(img_c)
