@@ -13,22 +13,24 @@ from Cryptodome.Util import Counter
 
 headers = {
     'User-Agent':
-    'Mozilla/5.0 (Windows NT 10.0; rv:61.0) Gecko/20100101 Firefox/61.0'
+    'Mozilla/5.0 (Windows NT 10.0; rv:62.0) Gecko/20100101 Firefox/62.0'
 }
 
 
 def Get_Endata():
     """从URL中获取纯文本信息"""
     print("信息获取ing。。。。。。")
-    url = "http://www.free-ss.tk/"
+    url = "http://free-ss.tk/"
     n = 0
     try:
-        while n < 5:
+        while n < 4:
             n += 1
 
             s = requests.session()
-            html = requests.get(url, headers=headers, timeout=2).text
-
+            html = requests.get(url, headers=headers, timeout=5).text
+            html = re.sub(r"/\*{1,2}[\s\S]*?\*/", "", html)
+            # import ipdb
+            # import
             a = re.findall("var a='(.*?)'", html)[1]
             b = re.findall("var b='(.*?)'", html)[1]
             img_c = re.findall(r"data:image/png;base64,(.*)'", html)[0]
@@ -104,9 +106,9 @@ def Write_Config(guiconfig, ss_data, filename="gui-config.json"):
         if (re.match(r"aes|rc4|chacha", ss[3])):
             ss[3], ss[4] = ss[4], ss[3]
 
-        #限制获取数量为8
+        #限制获取数量为10
         counts += 1
-        if (counts > 8):
+        if (counts > 10):
             break
 
         config["password"] = ss[3]
